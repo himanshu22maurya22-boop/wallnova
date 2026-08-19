@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WallNova — Premium 4K Wallpapers</title>
+<meta name="description" content="100+ premium HD & 4K wallpapers — Nature, Space, Cars, Animals aur bahut kuch. Free download.">
+<style>
+  :root{
+    --bg:#0a0a12;
+    --bg-soft:#12121e;
+    --card:#161626;
+    --line:#ffffff14;
+    --text:#f2f3fb;
+    --muted:#9a9db3;
+    --accent:#ff5fae;
+    --accent2:#6a5cff;
+    --accent3:#3ee6c4;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+  button,input{font:inherit}
+
+  /* ---- NAV ---- */
+  .nav{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:16px 5%;background:#0a0a12ee;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}
+  .brand .dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:15px;box-shadow:0 0 22px #ff5fae55}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+  .navlinks a:hover{color:#fff}
+  .navbtn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;font-size:13px}
+
+  /* ---- HERO ---- */
+  .hero{position:relative;padding:90px 5% 70px;text-align:center;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(circle,#6a5cff44,transparent 65%);filter:blur(10px);z-index:0}
+  .hero>*{position:relative;z-index:1}
+  .badge{display:inline-block;padding:7px 16px;border:1px solid var(--line);border-radius:99px;font-size:12px;letter-spacing:1px;color:var(--accent3);background:#3ee6c40f;margin-bottom:22px}
+  .hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-2px;margin:0 0 18px;font-weight:800}
+  .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{max-width:600px;margin:0 auto 32px;color:var(--muted);font-size:17px;line-height:1.6}
+  .searchwrap{max-width:600px;margin:0 auto 20px;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 8px 6px 20px}
+  .searchwrap span{color:var(--muted);font-size:20px}
+  .searchwrap input{flex:1;background:none;border:0;outline:0;color:#fff;padding:12px 0}
+  .searchwrap button{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;color:#fff;padding:12px 20px;border-radius:11px;font-weight:700;cursor:pointer}
+  .stats{display:flex;justify-content:center;gap:40px;margin-top:34px;flex-wrap:wrap}
+  .stats div{text-align:center}
+  .stats b{display:block;font-size:26px;background:linear-gradient(135deg,var(--accent3),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stats small{color:var(--muted);font-size:12px;letter-spacing:.5px}
+
+  /* ---- CATEGORY CHIPS ---- */
+  .chipbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 5% 55px;position:relative;z-index:1}
+  .chip{padding:9px 17px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;font-size:13px;transition:.2s}
+  .chip:hover{color:#fff;border-color:#ffffff30}
+  .chip.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:transparent}
+
+  /* ---- SECTION ---- */
+  .section{padding:20px 5% 90px}
+  .sectionhead{display:flex;align-items:end;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap;gap:12px}
+  .sectionhead h2{font-size:30px;margin:0;letter-spacing:-1px}
+  .sectionhead p{color:var(--muted);margin:4px 0 0;font-size:14px}
+  .count{color:var(--muted);font-size:13px}
+
+  /* ---- MASONRY GRID ---- */
+  .masonry{column-count:4;column-gap:16px}
+  .card{break-inside:avoid;margin-bottom:16px;position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:var(--card)}
+  .card img{width:100%;display:block;transition:.4s transform}
+  .card:hover img{transform:scale(1.06)}
+  .card .overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,#000000d0);display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+  .card .cattag{position:absolute;top:12px;left:12px;background:#000a;padding:5px 10px;border-radius:7px;font-size:10px;letter-spacing:1px;color:var(--accent3)}
+  .card .premium{position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));padding:5px 9px;border-radius:7px;font-size:10px;font-weight:800}
+  .card .title{font-weight:700;font-size:14px}
+  .card .meta{color:#cfd3e6;font-size:11px;margin-top:2px}
+
+  .loadmore{display:block;margin:14px auto 0;padding:14px 34px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:#fff;cursor:pointer;font-weight:700}
+  .loadmore:hover{border-color:#ffffff40}
+
+  /* ---- MODAL ---- */
+  .modal{display:none;position:fixed;inset:0;z-index:60;background:#000c;backdrop-filter:blur(8px);place-items:center;padding:20px}
+  .modal.show{display:grid}
+  .mbox{width:min(950px,100%);max-height:90vh;display:grid;grid-template-columns:1.3fr 1fr;background:var(--bg-soft);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .mbox img{width:100%;height:100%;object-fit:cover;max-height:90vh}
+  .mclose{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:#000a;border:0;color:#fff;font-size:22px;cursor:pointer;z-index:2}
+  .mdetails{padding:36px 30px;display:flex;flex-direction:column;justify-content:center}
+  .mdetails .eyebrow{color:var(--accent3);font-size:11px;letter-spacing:2px;margin-bottom:10px}
+  .mdetails h2{font-size:28px;margin:0 0 10px}
+  .mdetails p{color:var(--muted);margin:0 0 20px;font-size:14px}
+  .dlbtn{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;color:#fff;padding:14px;border-radius:12px;font-weight:800;cursor:pointer;text-align:center}
+  .mdetails small{color:#6f7386;margin-top:12px;display:block}
+
+  .toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,20px);opacity:0;background:#fff;color:#0a0a12;padding:12px 20px;border-radius:10px;z-index:80;transition:.25s;font-weight:600}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  footer{border-top:1px solid var(--line);padding:40px 5%;color:var(--muted);display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  footer .links{margin-left:auto;display:flex;gap:18px;font-size:14px}
+  footer .links a:hover{color:#fff}
+
+  @media(max-width:1100px){.masonry{column-count:3}}
+  @media(max-width:800px){.masonry{column-count:2}.navlinks{display:none}.mbox{grid-template-columns:1fr}.mbox img{max-height:45vh}}
+  @media(max-width:520px){.masonry{column-count:1}.stats{gap:26px}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#top"><span class="dot">WN</span> WallNova</a>
+  <nav class="navlinks">
+    <a href="#gallery">Gallery</a>
+    <a href="#categories">Categories</a>
+    <a href="#about">About</a>
+  </nav>
+  <a class="navbtn" href="#gallery">Explore Now</a>
+</header>
+
+<section class="hero" id="top">
+  <div class="badge">✦ 100+ PREMIUM WALLPAPERS · FREE HD & 4K</div>
+  <h1>Har screen ke liye<br><span>ek naya vibe.</span></h1>
+  <p>Nature, Space, Cars, Animals aur Abstract — sabse khoobsurat premium wallpapers ka collection, aapke mobile aur desktop ke liye, bilkul free.</p>
+  <div class="searchwrap">
+    <span>⌕</span>
+    <input id="search" placeholder="Search karo... jaise 'ocean', 'space', 'car'">
+    <button onclick="doSearch()">Search</button>
+  </div>
+  <div class="stats">
+    <div><b id="statTotal">0</b><small>WALLPAPERS</small></div>
+    <div><b>12</b><small>CATEGORIES</small></div>
+    <div><b>4K</b><small>MAX QUALITY</small></div>
+    <div><b>100%</b><small>FREE DOWNLOAD</small></div>
+  </div>
+</section>
+
+<div class="chipbar" id="categories"></div>
+
+<section class="section" id="gallery">
+  <div class="sectionhead">
+    <div>
+      <h2>Premium Collection</h2>
+      <p>Tap kisi bhi wallpaper par preview aur download ke liye</p>
+    </div>
+    <div class="count" id="resultCount"></div>
+  </div>
+  <div class="masonry" id="grid"></div>
+  <button class="loadmore" id="loadMoreBtn" onclick="loadMore()">+ Aur wallpapers dekho</button>
+</section>
+
+<footer id="about">
+  <div class="brand"><span class="dot">WN</span> WallNova</div>
+  <span>Har screen ko banaye khoobsurat.</span>
+  <div class="links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div>
+  <small>© 2026 WallNova.com</small>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="mbox">
+    <button class="mclose" onclick="closeModal()">×</button>
+    <img id="mimg" src="" alt="">
+    <div class="mdetails">
+      <div class="eyebrow" id="mcat">CATEGORY</div>
+      <h2 id="mtitle"></h2>
+      <p id="mmeta"></p>
+      <a class="dlbtn" id="mdownload" href="#" download>⬇ Download Wallpaper</a>
+      <small>Free to use. Images sourced via Lorem Picsum (public photo API).</small>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- DATA GENERATION ---------------- */
+const categories = [
+  {name:"Nature", icon:"🌿", words:["Emerald Valley","Misty Forest","Golden Meadow","Silent Woods","Alpine Trail","Green Horizon","Wild Canopy","Morning Dew","Fern Grove"]},
+  {name:"Space", icon:"🪐", words:["Beyond Saturn","Nebula Drift","Cosmic Void","Star Cluster","Lunar Eclipse","Orbit Zero","Galaxy Edge","Deep Field","Comet Trail"]},
+  {name:"Ocean", icon:"🌊", words:["Deep Blue","Coral Reef","Tidal Wave","Calm Shore","Storm Surge","Azure Depths","Wave Break","Coastal Mist","Open Sea"]},
+  {name:"Mountains", icon:"⛰️", words:["Snow Peak","Rocky Ridge","Cloud Summit","Granite Wall","Highland Pass","Frozen Crest","Valley View","Stone Giant","Sky Ridge"]},
+  {name:"Cars", icon:"🏎️", words:["Neon Velocity","Midnight Drive","Chrome Speed","Turbo Line","Street Racer","Electric Pulse","Carbon Edge","Night Circuit","Velocity Red"]},
+  {name:"Animals", icon:"🐾", words:["Midnight Wolf","Golden Tiger","Silent Fox","Desert Lion","Arctic Owl","Wild Panther","Royal Eagle","Forest Deer","Snow Leopard"]},
+  {name:"Abstract", icon:"💠", words:["Liquid Dreams","Color Flow","Prism Break","Fractal Wave","Neon Haze","Ink Bloom","Digital Mist","Chroma Shift","Glass Wave"]},
+  {name:"City", icon:"🏙️", words:["Cyber City","Night Skyline","Urban Pulse","Rain Streets","Downtown Glow","Metro Lights","Rooftop View","Grid City","Dusk Avenue"]},
+  {name:"Minimal", icon:"◻️", words:["Soft Gray","Clean Lines","Quiet Space","Pale Horizon","Simple Form","Blank Canvas","Muted Tone","Flat Light","Gentle Shade"]},
+  {name:"Dark", icon:"🖤", words:["Black Hollow","Shadow Realm","Void Line","Dark Matter","Obsidian","Night Fade","Deep Noir","Eclipse Dark","Ash Grey"]},
+  {name:"Gaming", icon:"🎮", words:["Pixel World","Boss Arena","Neon Level","Game Grid","Cyber Quest","Battle Zone","Retro Byte","Digital Realm","Power Core"]},
+  {name:"Anime", icon:"🌸", words:["Sakura Dream","Spirit Sky","Dream Realm","Soft Bloom","Twilight Anime","Pastel World","Cherry Wind","Studio Glow","Ink Sky"]}
+];
+
+const qualities = ["4K • Desktop","4K • Mobile","2K • Ultra Wide","4K • Ultra HD","2K • Mobile","4K • Desktop"];
+
+let allWallpapers = [];
+let seedCounter = 1;
+categories.forEach(cat=>{
+  cat.words.forEach((word,i)=>{
+    allWallpapers.push({
+      id: seedCounter,
+      title: word,
+      category: cat.name,
+      icon: cat.icon,
+      quality: qualities[seedCounter % qualities.length],
+      premium: (seedCounter % 3 === 0),
+      seed: "wallnova-" + seedCounter,
+      h: 500 + (seedCounter % 5) * 60
+    });
+    seedCounter++;
+  });
+});
+// ensure 100+ (currently 12 cats x 9 = 108)
+
+document.getElementById("statTotal").textContent = allWallpapers.length + "+";
+
+function imgUrl(w, width=600){
+  return `https://picsum.photos/seed/${w.seed}/${width}/${w.h}`;
+}
+function imgUrlBig(w){
+  return `https://picsum.photos/seed/${w.seed}/1400/${Math.round(w.h*2.2)}`;
+}
+
+/* ---------------- CHIPS ---------------- */
+const chipbar = document.querySelector(".chipbar");
+let activeCat = "All";
+function renderChips(){
+  const all = ["All", ...categories.map(c=>c.name)];
+  chipbar.innerHTML = all.map(name=>{
+    const icon = name==="All" ? "✦" : categories.find(c=>c.name===name).icon;
+    return `<button class="chip ${name===activeCat?'active':''}" onclick="setCategory('${name}')">${icon} ${name}</button>`;
+  }).join("");
+}
+function setCategory(name){
+  activeCat = name;
+  visibleCount = 24;
+  document.getElementById("search").value = "";
+  renderChips();
+  renderGrid();
+  document.getElementById("gallery").scrollIntoView({behavior:"smooth"});
+}
+
+/* ---------------- GRID / SEARCH / PAGINATION ---------------- */
+let visibleCount = 24;
+const grid = document.getElementById("grid");
+
+function getFiltered(){
+  const q = document.getElementById("search").value.toLowerCase().trim();
+  return allWallpapers.filter(w=>{
+    const matchesCat = activeCat==="All" || w.category===activeCat;
+    const matchesQ = !q || (w.title+" "+w.category).toLowerCase().includes(q);
+    return matchesCat && matchesQ;
+  });
+}
+
+function renderGrid(){
+  const filtered = getFiltered();
+  const shown = filtered.slice(0, visibleCount);
+  grid.innerHTML = shown.map(w=>`
+    <article class="card" onclick="openModal(${w.id})">
+      <span class="cattag">${w.icon} ${w.category.toUpperCase()}</span>
+      ${w.premium ? '<span class="premium">PREMIUM</span>' : ''}
+      <img loading="lazy" src="${imgUrl(w)}" alt="${w.title}">
+      <div class="overlay">
+        <div class="title">${w.title}</div>
+        <div class="meta">${w.quality}</div>
+      </div>
+    </article>
+  `).join("");
+  document.getElementById("resultCount").textContent = filtered.length + " wallpapers mile";
+  document.getElementById("loadMoreBtn").style.display = (visibleCount < filtered.length) ? "block" : "none";
+}
+
+function loadMore(){
+  visibleCount += 24;
+  renderGrid();
+}
+
+function doSearch(){
+  visibleCount = 24;
+  activeCat = "All";
+  renderChips();
+  renderGrid();
+}
+document.getElementById("search").addEventListener("input", doSearch);
+
+/* ---------------- MODAL ---------------- */
+function openModal(id){
+  const w = allWallpapers.find(x=>x.id===id);
+  if(!w) return;
+  document.getElementById("mimg").src = imgUrlBig(w);
+  document.getElementById("mcat").textContent = w.icon + " " + w.category.toUpperCase();
+  document.getElementById("mtitle").textContent = w.title;
+  document.getElementById("mmeta").textContent = w.quality + " · Premium wallpaper";
+  const dl = document.getElementById("mdownload");
+  dl.href = imgUrlBig(w);
+  dl.setAttribute("download", w.title.replace(/\s+/g,"_") + ".jpg");
+  document.getElementById("modal").classList.add("show");
+}
+function closeModal(){
+  document.getElementById("modal").classList.remove("show");
+}
+document.getElementById("modal").addEventListener("click", e=>{
+  if(e.target.id === "modal") closeModal();
+});
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape") closeModal();
+});
+
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"), 2200);
+}
+
+/* ---------------- INIT ---------------- */
+renderChips();
+renderGrid();
+</script>
+</body>
+</html>
